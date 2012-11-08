@@ -64,8 +64,56 @@
   <body>
 
     <div id="app">
-        <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        <a class="btn btn-large btn-success" href="#">Sign up today</a>   
+        <h2>Try it!
+</h2>
+<form id="signupForm" action="https://examples.webscript.io/signup" method="post" class="form-horizontal">
+  <legend>Sign Up
+  </legend>
+  <div class="control-group">
+    <label for="username" class="control-label">Choose a username:
+    </label>
+    <div class="controls">
+      <input type="text" name="username"/>
+    </div>
+  </div>
+  <div class="control-group">
+    <label for="password" class="control-label">Choose a password:
+    </label>
+    <div class="controls">
+      <input type="password" name="password"/>
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <button type="submit" class="btn btn-primary">Create User
+      </button><img src="/static/ajax-loader.gif" style="margin-left: 20px" class="hide"/>
+    </div>
+  </div>
+</form>
+<form id="loginForm" action="https://examples.webscript.io/login" method="post" class="form-horizontal">
+  <legend>Log In
+  </legend>
+  <div class="control-group">
+    <label for="username" class="control-label">Enter your username:
+    </label>
+    <div class="controls">
+      <input type="text" name="username"/>
+    </div>
+  </div>
+  <div class="control-group">
+    <label for="password" class="control-label">Enter your password:
+    </label>
+    <div class="controls">
+      <input type="password" name="password"/>
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <button type="submit" class="btn btn-primary">Log In
+      </button><img src="/static/ajax-loader.gif" style="margin-left: 20px" class="hide"/>
+    </div>
+  </div>
+</form>
     </div> <!-- /container -->
 
     <!-- Le javascript
@@ -83,8 +131,52 @@
     <script src="../assets/js/bootstrap-button.js"></script>
     <script src="../assets/js/bootstrap-collapse.js"></script>
     <script src="../assets/js/bootstrap-carousel.js"></script>
-    <script src="../assets/js/bootstrap-typeahead.js"></script>
-	<script>
+    <script src="../assets/js/bootstrap-typeahead.js"></script>  
+	<script>$(function () {
+	 $('#signupForm').submit(function (e) {
+	  e.preventDefault();
+	  var username = $(this).find('input[name="username"]').val();
+	  var password = $(this).find('input[name="password"]').val();
+	  $(this).find('img').toggleClass('hide', false);
+	  $(this).find('button').prop('disabled', true);
+	  $.ajax('https://examples.webscript.io/signup', {
+	   type: 'post',
+	   data: { username: username, password: password },
+	   statusCode: {
+	    200: function () { alert('User created successfully.'); $('#signupForm').find('input').val(''); },
+	    409: function () { alert('That username is already taken.'); $(this).find('img').toggleClass('hide', false); },
+	
+	    //hack for IE8/9 XDomainRequest, which doesn't report actual status codes
+	    404: function () { alert('That username is already taken.'); $(this).find('img').toggleClass('hide', false); }
+	   },
+	   complete: function () {
+	    $('#signupForm').find('button').prop('disabled', false);
+	    $('#signupForm').find('img').addClass('hide');
+	   }
+	  });
+	 });
+	 $('#loginForm').submit(function (e) {
+	  e.preventDefault();
+	  var username = $(this).find('input[name="username"]').val();
+	  var password = $(this).find('input[name="password"]').val();
+	  $(this).find('img').toggleClass('hide', false);
+	  $(this).find('button').prop('disabled', true);
+	  $.ajax('https://examples.webscript.io/login', {
+	   type: 'post',
+	   data: { username: username, password: password },
+	   statusCode: {
+	    200: function () { alert('Password accepted.'); $('#loginForm').find('input').val(''); },
+	    403: function () { alert('User authentication failed.'); },
+	    //hack for IE8/9 XDomainRequest, which doesn't report actual status codes
+	    404: function () { alert('User authentication failed.'); }
+	   },
+	   complete: function () {
+	    $('#loginForm').find('button').prop('disabled', false);
+	    $('#loginForm').find('img').addClass('hide');
+	   }
+	  });
+	 });
+	});
 	var debug=false;
 	Build("Bootswap");
 	function Build(appName){BuildNav(appName);BuildDebug();BuildFooter(appName);}
