@@ -9,43 +9,6 @@
 
     <!-- Le styles -->
     <link href="../assets/css/bootstrap10.css" rel="stylesheet">
-    <style type="text/css">
-      body {
-        padding-top: 20px;
-        padding-bottom: 40px;
-      }
-
-      /* Custom container */
-      .container-narrow {
-        margin: 0 auto;
-        max-width: 700px;
-      }
-      .container-narrow > hr {
-        margin: 30px 0;
-      }
-
-      /* Main marketing message and sign up button */
-      .jumbotron {
-        margin: 60px 0;
-        text-align: center;
-      }
-      .jumbotron h1 {
-        font-size: 72px;
-        line-height: 1;
-      }
-      .jumbotron .btn {
-        font-size: 21px;
-        padding: 14px 24px;
-      }
-
-      /* Supporting marketing content */
-      .marketing {
-        margin: 60px 0;
-      }
-      .marketing p + h4 {
-        margin-top: 28px;
-      }
-    </style>
     <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -63,56 +26,24 @@
 
   <body>
 
-    <div id="app">
-        <h2>Try it!
-</h2>
+<div id="app">    
 <form id="signupForm" action="https://examples.webscript.io/signup" method="post" class="form-horizontal">
-  <legend>Sign Up
-  </legend>
+      
   <div class="control-group">
-    <label for="username" class="control-label">Choose a username:
-    </label>
-    <div class="controls">
-      <input type="text" name="username"/>
-    </div>
+      <input type="text" name="username" placeholder="Choose a username"/>
   </div>
   <div class="control-group">
-    <label for="password" class="control-label">Choose a password:
-    </label>
-    <div class="controls">
-      <input type="password" name="password"/>
-    </div>
-  </div>
-  <div class="control-group">
-    <div class="controls">
-      <button type="submit" class="btn btn-primary">Create User
-      </button><img src="/static/ajax-loader.gif" style="margin-left: 20px" class="hide"/>
-    </div>
-  </div>
+      <input type="password" name="password" placeholder="Choose a password"/>
+  </div><h2><button type="submit" class="btn" style="width: 220px">Sign Up</button></h2>
 </form>
 <form id="loginForm" action="https://examples.webscript.io/login" method="post" class="form-horizontal">
-  <legend>Log In
-  </legend>
+ 
   <div class="control-group">
-    <label for="username" class="control-label">Enter your username:
-    </label>
-    <div class="controls">
-      <input type="text" name="username"/>
-    </div>
+      <input type="text" name="username" placeholder="Enter username"/>
   </div>
   <div class="control-group">
-    <label for="password" class="control-label">Enter your password:
-    </label>
-    <div class="controls">
-      <input type="password" name="password"/>
-    </div>
-  </div>
-  <div class="control-group">
-    <div class="controls">
-      <button type="submit" class="btn btn-primary">Log In
-      </button><img src="/static/ajax-loader.gif" style="margin-left: 20px" class="hide"/>
-    </div>
-  </div>
+      <input type="password" name="password" placeholder="Enter password"/>
+  </div> <h2><button type="submit" class="btn" style="width: 220px">Sign In</button></h2>
 </form>
     </div> <!-- /container -->
 
@@ -217,7 +148,7 @@
 	function showInput(input){document.getElementById("inputLabel").innerHTML="Last Input: "+input;}				
 	function writeDocument(content){$.get("../assets/examples/"+content,function(data){document.open('text/html');document.write(data);document.close();});}
 	function change(x,y){for(var i=0;i<$(x).length;i++){if($(x)[i].className.indexOf(y)==-1){$(x)[i].className=$(x)[i].className+" "+y;}else{$(x)[i].className=$(x)[i].className.replace(y,"");}}}
-	function changeStyle() {var styleNum=parseInt($('link')[0].href.substring($('link')[0].href.length - 6, $('link')[0].href.length - 4))+1;if ($('link')[0].href.substring($('link')[0].href.length - 6, $('link')[0].href.length - 4) == 13){styleNum=10;}$('link')[0].href = $('link')[0].href.replace("bootstrap"+$('link')[0].href.substring($('link')[0].href.length - 6, $('link')[0].href.length - 4), "bootstrap"+styleNum);}
+	function changeStyle() {var styleNum=parseInt($('link')[0].href.substring($('link')[0].href.length - 6, $('link')[0].href.length - 4))+1;if ($('link')[0].href.substring($('link')[0].href.length - 6, $('link')[0].href.length - 4) == 16){styleNum=10;}$('link')[0].href = $('link')[0].href.replace("bootstrap"+$('link')[0].href.substring($('link')[0].href.length - 6, $('link')[0].href.length - 4), "bootstrap"+styleNum); showStyle();}
 	var keyBindings = [['container','67'],['hero-unit','72'],['jumbotron','74'],['masthead','77'],['container-narrow','78']];
 	document.onkeydown = function(e){
 		var key = (e) ? e.which : event.keyCode;if(debug)alert(key);

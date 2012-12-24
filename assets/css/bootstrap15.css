@@ -1,4 +1,16 @@
 /*!
+* Made with love from the team  at Elise Labs (software consultants).
+* eliselabs.com
+* Bootswap v0.1 Theme-mod
+* Licensed under the same license as Bootstrap.
+*
+* Contact pr or am @eliselabs.com
+*
+*
+*/
+
+
+/*!
  * Bootstrap v2.2.1
  *
  * Copyright 2012 Twitter, Inc
@@ -8,6 +20,8 @@
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
 
+@import url(http://fonts.googleapis.com/css?family=Strait);
+ 
 article,
 aside,
 details,
@@ -160,11 +174,11 @@ textarea {
 
 body {
   margin: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Strait", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 20px;
   color: #333333;
-  background-color: #ffffff;
+  background-color: #ec9693;
 }
 
 a {
@@ -962,7 +976,7 @@ input,
 button,
 select,
 textarea {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Strait", Helvetica, Arial, sans-serif;
 }
 
 label {
@@ -4318,7 +4332,7 @@ input[type="submit"].btn.btn-mini {
 .navbar-search .search-query {
   padding: 4px 14px;
   margin-bottom: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Strait", Helvetica, Arial, sans-serif;
   font-size: 13px;
   font-weight: normal;
   line-height: 1;
@@ -5891,6 +5905,7 @@ a.badge:hover {
 .affix {
   position: fixed;
 }
+
 body {
         padding-top: 20px;
         padding-bottom: 40px;
@@ -5926,3 +5941,4 @@ body {
       .marketing p + h4 {
         margin-top: 28px;
       }
+
